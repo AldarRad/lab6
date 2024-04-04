@@ -1,40 +1,35 @@
 #include<cmath>
 #include "rectangle.h"
 
-rectangle::rectangle(int a, int b, int c, int d)
+rectangle::rectangle(point a ,point c, point p1)
 {
-	x2 = a;
-	y2 = b;
-	x4 = c;
-	y4 = d;
-}
-
-void rectangle::coor()
-{
-	x1 = x2;
-	y1 = y4;
-	x3 = x4;
-	y3 = y2;
+	A = a;
+	C = c;
+	B.x = c.x;
+	B.y = a.y;
+	D.x = a.x;
+	D.y = c.y;	
+	P = p1;
 }
 void rectangle::print()
 {
-	std::cout << "Координаты левой-вверхней вершины: (B) (" << x2 << "," << y2 << ") " << "\n";
-	std::cout << "Координаты правой-нижней вершины: (D) (" << x4 << "," << y4 << ") " << "\n";
+	std::cout << "Координаты левой-вверхней вершины: (A) (" << A.x << "," << A.y << ") " << "\n";
+	std::cout << "Координаты правой-нижней вершины: (C) (" << C.x << "," << C.y << ") " << "\n";
 }
 void rectangle::coordinate()
 {
-	std::cout << "Нахождение координаты левой-нижней вершины: (A) ";
-	std::cout << "(" << x1 << "," << y1 << ")" << "\n";
-	std::cout << "Нахождение координаты правой-вверхней вершины: (C) ";
-	std::cout << "(" << x3 << "," << y3 << ")" << "\n";
+	std::cout << "Нахождение координаты левой-нижней вершины: (D) ";
+	std::cout << "(" << D.x << "," << D.y << ")" << "\n";
+	std::cout << "Нахождение координаты правой-вверхней вершины: (B) ";
+	std::cout << "(" << B.x << "," << B.y << ")" << "\n";
+	std::cout << "Точка: (P) "<< "(" << P.x << "," << P.y << ")" << "\n";
 }
-
 void rectangle::side()
 {
-	AB = sqrt((pow(x2 - x1, 2)) + (pow(y2 - y1, 2)));
-	BC = sqrt((pow(x3 - x2, 2)) + (pow(y3 - y2, 2)));
-	CD = sqrt((pow(x4 - x3, 2)) + (pow(y4 - y3, 2)));
-	AD = sqrt((pow(x4 - x1, 2)) + (pow(y4 - y1, 2)));
+	AB = sqrt((pow(B.x - A.x, 2)) + (pow(B.y - A.y, 2)));
+	BC = sqrt((pow(C.x - B.x, 2)) + (pow(C.y - B.y, 2)));
+	CD = sqrt((pow(D.x - C.x, 2)) + (pow(D.y - C.y, 2)));
+	AD = sqrt((pow(D.x - A.x, 2)) + (pow(D.y - A.y, 2)));
 	std::cout << "Длина отрезка AB = " << AB << "\n";
 	std::cout << "Длина отрезка BC = " << BC << "\n";
 	std::cout << "Длина отрезка CD = " << CD << "\n";
@@ -43,5 +38,26 @@ void rectangle::side()
 void rectangle::square()
 {
 	int S;
-	std::cout << "S = " << "AB*AD = " << AB * AD;
+	std::cout << "S = " << "AB*AD = " << AB * AD << "\n";
+}
+void rectangle::function1()
+{
+	if((D.x <= P.x && C.x >= P.x) && (A.y>=P.y && D.y<=P.y))
+		std::cout << "1";
+	else 
+		std::cout << "0";
+}
+void rectangle::function2()
+{
+	if(P.x == 0)
+		std::cout << "1";
+	else 
+		std::cout << "0";
+}
+void rectangle::function3()
+{
+	if(P.y == 0)
+		std::cout << "1";
+	else 
+		std::cout << "0";
 }

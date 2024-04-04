@@ -1,18 +1,32 @@
 #include<iostream>
 
+/**
+ * @brief 
+ * 
+ */
+class point
+{
+public:
+	int x ;
+	int y ;
+};
 class rectangle
 {
 private:
-	int x2, y2;
-	int x4, y4;
-	int x1, y1;
-	int x3, y3;
+	point P;
+	point A,//левая-верхняя
+	B,//правая-верхня
+	C,//правая-нижня
+	D;//левая-нижняя
 	int AB, BC, CD, AD;
 public:
-	rectangle(int a, int b, int c, int d); // конструктор 
-	void coor(); // подсчет координат 
+	rectangle(point a,point c,point p1); // конструктор  
+	//void pointer(point p);
 	void print(); // вывод 
 	void coordinate();
 	void side();
 	void square();
+	void function1();
+	void function2();
+	void function3();
 };
